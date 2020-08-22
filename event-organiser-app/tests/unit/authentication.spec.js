@@ -5,7 +5,7 @@ import Vuex from 'vuex'
 const localVue = createLocalVue()
 
 localVue.use(Vuex)
-describe('An organiser should authenticate using Google or Facebook.' , () => {
+describe('An organiser should authenticate using Google or Facebook and Sign out' , () => {
     let store
     let actions 
 
