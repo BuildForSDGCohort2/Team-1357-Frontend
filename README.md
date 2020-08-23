@@ -8,6 +8,12 @@ Sports day of the future. This application shall allow sport day organisers to q
 Goals 
 
 Create a friendly and intuitive user experience for event organisers, event-goers, team members.
+
+
 Incentives Sports Day Organisers to create more events.
+
+
 Incentives Sports Day Goers to integrate this as part of their lifestyle.
+
+
 Promote good health & well being
