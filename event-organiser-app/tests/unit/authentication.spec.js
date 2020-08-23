@@ -8,6 +8,7 @@ localVue.use(Vuex)
 describe('An organiser should authenticate using Google or Facebook and Sign out' , () => {
     let store
     let actions 
+    let state
 
     beforeEach(() => {
         actions = {
@@ -15,10 +16,11 @@ describe('An organiser should authenticate using Google or Facebook and Sign out
             facebookLogin: jest.fn(),
             signOut: jest.fn()
         }
+        state = {
+            userProfile: {}
+        }
         store = new Vuex.Store({
-            state: {
-                userProfile: null
-            }, 
+            state, 
             actions
         })
     })
@@ -26,14 +28,14 @@ describe('An organiser should authenticate using Google or Facebook and Sign out
         const wrapper = shallowMount(Login , {store , localVue})
         const googleButton = wrapper.find('#google').trigger('click')
         expect(actions.googleLogin).toHaveBeenCalled()
-        expect(state.userProfile).toBe(!null)
+       
     })
 
     it('clicks on facebook button' , async () => {
         const wrapper = shallowMount(Login , {store , localVue})
         const facebookButton = wrapper.find('#facebook').trigger('click')
-        expect(actions.facebookButton).toHaveBeenCalled()
-        expect(state.userProfile).toBe(!null)
+        expect(actions.facebookLogin).toHaveBeenCalled()
+       
     })
 
     it('clicks on sign out button' , async () => {
@@ -41,7 +43,7 @@ describe('An organiser should authenticate using Google or Facebook and Sign out
         if(state.userProfile != null){
             const signOutButton = wrapper.find('#signout').trigger('click')
             expect(actions.signOut).toHaveBeenCalled()
-            expect(state.userProfile).toBe(null)
+            
         }       
 
     })
