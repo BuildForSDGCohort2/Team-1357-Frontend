@@ -14,6 +14,7 @@ describe('An organiser should authenticate using Google or Facebook and Sign out
         actions = {
             googleLogin: jest.fn(),
             facebookLogin: jest.fn(),
+            emailPasswordSignUp: jest.fn(),
             signOut: jest.fn()
         }
         state = {
@@ -36,6 +37,15 @@ describe('An organiser should authenticate using Google or Facebook and Sign out
         const facebookButton = wrapper.find('#facebook').trigger('click')
         expect(actions.facebookLogin).toHaveBeenCalled()
        
+    })
+    it('clicks sign up using email' , async () => {
+        const wrapper = shallowMount(Login , {store , localVue})
+        const nameInput = wrapper.find("#nameInput").setValue("organiser1")
+        const emailInput = wrapper.find("#emailInput").setValue("organiser1@tendaievents.com")
+        const passwordInput = wrapper.find("#passwordInput").setValue("organiserDefaultPassword")
+        const submitButton = wrapper.find("#signupButton").trigger('click')
+        
+        expect(actions.emailPasswordSignUp).toHaveBeenCalled()
     })
 
     it('clicks on sign out button' , async () => {

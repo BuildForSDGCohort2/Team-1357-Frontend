@@ -26,7 +26,7 @@
                       <i class="material-icons">face</i>
                     </span>
                   </div>
-                  <input type="text" class="form-control" placeholder="First Name...">
+                  <input type="text" class="form-control" placeholder="First Name..."  id="nameInput"  v-model.trim="signupForm.name">
                 </div>
                 <div class="input-group">
                   <div class="input-group-prepend">
@@ -34,7 +34,7 @@
                       <i class="material-icons">mail</i>
                     </span>
                   </div>
-                  <input type="email" class="form-control" placeholder="Email...">
+                  <input type="email" class="form-control" placeholder="Email..." id="emailInput" v-model.trim="signupForm.email">
                 </div>
                 <div class="input-group">
                   <div class="input-group-prepend">
@@ -42,27 +42,32 @@
                       <i class="material-icons">lock_outline</i>
                     </span>
                   </div>
-                  <input type="password" class="form-control" placeholder="Password...">
+                  <input type="password" class="form-control" placeholder="Password..." id="passwordInput" v-model.trim="signupForm.password">
                 </div>
               </div>
               <div class="footer text-center">
-                <a href="#pablo" class="btn btn-primary btn-link btn-wd btn-lg">Get Started</a>
+                <a  class="btn btn-primary btn-link btn-wd btn-lg" id="signupButton" @click="emailPasswordSignUp">Get Started</a>
               </div>
             </form>
           </div>
         </div>
       </div>
     </div>
-    <login-footer></login-footer>
+    <LoginFooter></LoginFooter>
     </div>
     </div>
 </template>
 
 <script>
-import LoginFooter from '@/components/LoginFooter.vue'
+import LoginFooter from './LoginFooter.vue'
 export default {
     data(){
         return{
+          signupForm: {
+            name: '' , 
+            email: '', 
+            password: ''
+          }
 
         }
     },
@@ -73,6 +78,13 @@ export default {
        async googleLogin(){
             await this.$store.dispatch('googleLogin')
             
+        },
+        async emailPasswordSignUp(){
+          this.$store.dispatch('emailPasswordSignUp' , {
+            email: this.signupForm.email,
+            password: this.signupForm.password,
+            name: this.signupForm.name
+          })
         }
 
 
