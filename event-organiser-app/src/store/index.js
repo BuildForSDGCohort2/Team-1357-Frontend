@@ -27,13 +27,13 @@ export default new Vuex.Store({
     }
 
    } , 
-    async facebookLogin(){
+    async facebookLogin({commit}){
       try {
         //facebook login 
       const { user } = await auth.signInWithPopup(facebookProvider)
 
       //fetch user profile and set in state 
-      this.commit('setUserProfile' , user)
+      commit('setUserProfile' , user)
       } catch (error) {
         console.log(error.message)
       }

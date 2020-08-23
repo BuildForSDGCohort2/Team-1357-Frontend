@@ -8,11 +8,21 @@ import store from './store'
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
+//import materialUiKit 
+import './assets/materialUiKit/material-kit.css'
+
+//import firebase 
+import { auth } from './utils/firebase.js'
 
 Vue.config.productionTip = false
 
-new Vue({
-  router,
-  store,
-  render: h => h(App)
-}).$mount('#app')
+let app 
+auth.onAuthStateChanged(() => {
+  if(!app){
+    app = new Vue({
+      router, 
+      store,
+      render: h => h(App)
+    }).$mount('#app')
+  }
+})
