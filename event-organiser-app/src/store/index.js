@@ -42,7 +42,7 @@ export default new Vuex.Store({
     async emailPasswordSignUp({dispatch} , form){
       try {
         //email password login
-        const { user } = await auth.signInWithEmailAndPassword(form.email, form.paswword)
+        const { user } = await auth.signInWithEmailAndPassword(form.email, form.password)
         
         // create organiser profile object in organiser collections
         await organisersCollection.doc(user.uid).set({
