@@ -7,8 +7,8 @@
           <div class="card card-login">
             <form class="form" method="" action="">
               <div class="card-header card-header-primary text-center">
-                <h4 class="card-title">Login</h4>
-                <div class="social-line">
+                <h4 class="card-title"> Email Login</h4>
+                <!-- <div class="social-line">
                   <a href="#facebook" class="btn btn-just-icon btn-link" id="facebook" @click="facebookLogin">
                     <i class="fa fa-facebook-square"></i>
                   </a>
@@ -16,37 +16,37 @@
                   <a href="#pablo" class="btn btn-just-icon btn-link" id="google" @click="googleLogin">
                     <i class="fa fa-google-plus"></i>
                   </a>
-                </div>
+                </div> -->
               </div>
               <p class="description text-center">Or Be Classical</p>
               <div class="card-body">
-                <div class="input-group">
+                <!-- <div class="input-group">
                   <div class="input-group-prepend">
                     <span class="input-group-text">
                       <i class="material-icons">face</i>
                     </span>
                   </div>
                   <input type="text" class="form-control" placeholder="First Name..."  id="nameInput"  v-model.trim="signupForm.name">
-                </div>
+                </div> -->
                 <div class="input-group">
                   <div class="input-group-prepend">
                     <span class="input-group-text">
                       <i class="material-icons">mail</i>
                     </span>
                   </div>
-                  <input type="email" class="form-control" placeholder="Email..." id="emailInput" v-model.trim="signupForm.email">
+                  <input type="email" class="form-control" placeholder="Email..."  v-model.trim="signupForm.email">
                 </div>
-                <div class="input-group">
+                <!-- <div class="input-group">
                   <div class="input-group-prepend">
                     <span class="input-group-text">
                       <i class="material-icons">lock_outline</i>
                     </span>
                   </div>
                   <input type="password" class="form-control" placeholder="Password..." id="passwordInput" v-model.trim="signupForm.password">
-                </div>
+                </div> -->
               </div>
               <div class="footer text-center">
-                <a  class="btn btn-primary btn-link btn-wd btn-lg" id="signupButton" @click="emailPasswordSignIn">Get Started</a>
+                <a  class="btn btn-primary btn-link btn-wd btn-lg" id="emailButton" @click="emailLinkSignIn">Get Started</a>
               </div>
             </form>
           </div>
@@ -57,47 +57,23 @@
     </div>
     </div>
 </template>
-
 <script>
-import LoginFooter from './LoginFooter.vue'
 export default {
-    data(){
-        return{
-          signupForm: {
-            name: '' , 
-            email: '', 
-            password: ''
-          }
-
-        }
-    },
-    methods: {
-       async facebookLogin(){
-          await this.$store.dispatch('facebookLogin')  
-        }, 
-       async googleLogin(){
-            await this.$store.dispatch('googleLogin')
-            
-        },
-        async emailPasswordSignIn(){
-          this.$store.dispatch('emailPasswordSignIn' , {
-            email: this.signupForm.email,
-            password: this.signupForm.password,
-            name: this.signupForm.name
-          })
-        }
-
-
-    },
-    components:{
-      LoginFooter
+  data(){
+    return {
+      signupForm: {
+        email: ''
+      }
     }
+  }, 
+  methods: {
+    async emailLinkSignIn(){
+      const url = location.href
+      await this.$store.dispatch('emailLogin' , {
+        email: this.signupForm.email,
+        url: url
+      })
+    }
+  }
 }
 </script>
-<style  scoped>
-#pageHeader {
-    
-    background-size: cover;
-    background-position: top center;
-}
-</style>

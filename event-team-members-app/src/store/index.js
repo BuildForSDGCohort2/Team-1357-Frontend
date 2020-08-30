@@ -44,7 +44,7 @@ export default new Vuex.Store({
         //email password login
         const { user } = await auth.signInWithEmailAndPassword(form.email, form.password)
         
-        // create organiser profile object in organiser collections
+        // create team members profile object in organiser collections
         await teamMembersCollection.doc(user.uid).set({
           name: form.name,
           email: form.email
@@ -55,6 +55,10 @@ export default new Vuex.Store({
       } catch (error) {
         console.log(error.message)
       }
+    }, 
+    async emailLinkSignIn( form){
+      //auth details 
+      await auth.signInWithEmailLink(form.email , form.url)
     }
   },
   modules: {
