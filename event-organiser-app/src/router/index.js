@@ -14,7 +14,7 @@ Vue.use(VueRouter)
     name: 'Dashboard',
     component: DashBoard,
     meta: {
-      requiresAuth: true 
+      requiresAuth: false 
     }
   },
   {
