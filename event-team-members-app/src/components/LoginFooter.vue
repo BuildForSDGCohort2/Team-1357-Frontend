@@ -36,6 +36,6 @@
 
 <script>
 export default {
-    name: 'loginFooter'
+    name: 'LoginFooter'
 }
 </script>

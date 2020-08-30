@@ -5,6 +5,7 @@ import VueRouter from 'vue-router'
 import DashBoard from '../views/Dashboard.vue'
 import Login from '../components/Login'
 import Settings from '../views/Settings.vue'
+import EmailSignUp from '../components/EmailSignUp.vue'
 import { auth } from '../utils/firebase'
 Vue.use(VueRouter)
 
@@ -36,6 +37,14 @@ Vue.use(VueRouter)
      component: Settings,
      meta: {
        requiresAuth: true
+     }
+   },
+   {
+     path: '/emailLinkSignIn',
+     name: 'emailLinkSignIn',
+     component: EmailSignUp,
+     meta: {
+       requiresAuth: false
      }
    }
 ]
