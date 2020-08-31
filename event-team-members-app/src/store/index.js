@@ -59,6 +59,12 @@ export default new Vuex.Store({
     async emailLinkSignIn( form){
       //auth details 
       await auth.signInWithEmailLink(form.email , form.url)
+    },
+    async signOut({commit}){
+      await auth.signOut()
+      
+      commit('setUserProfile', {})
+      this.$router.push('/login')
     }
   },
   modules: {
