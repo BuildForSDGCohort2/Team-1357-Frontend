@@ -1,6 +1,8 @@
 import {shallowMount , createLocalVue} from '@vue/test-utils'
 import flushPromises from 'flush-promises'
 import Login from '@/components/Login.vue'
+import SideBar from '@/components/SideBar.vue'
+
 import EmailSignUp from '@/components/EmailSignUp.vue'
 import Vuex from 'vuex'
 
@@ -51,7 +53,7 @@ describe('team leaders authentication scenarios' , () => {
     })
 
     it('clicks on sign out button' , async () => {
-        const wrapper = shallowMount(Login , {store , localVue})
+        const wrapper = shallowMount(SideBar , {store , localVue})
         if(state.userProfile != null){
             const signOutButton = wrapper.find('#signout').trigger('click')
             expect(actions.signOut).toHaveBeenCalled()
