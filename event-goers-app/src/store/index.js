@@ -52,6 +52,12 @@ export default new Vuex.Store({
       } catch (error) {
         console.log(error.message)
       }
+    },
+    async signOut({commit}){
+      await auth.signOut()
+      
+      commit('setUserProfile', {})
+      this.$router.push('/login')
     }
   },
   modules: {
