@@ -46,7 +46,7 @@
                 </div>
               </div>
               <div class="footer text-center">
-                <a  class="btn btn-primary btn-link btn-wd btn-lg" id="signupButton" @click="emailPasswordSignUp">Get Started</a>
+                <a  class="btn btn-primary btn-link btn-wd btn-lg" id="signupButton" @click="emailPasswordSignIn">Get Started</a>
               </div>
             </form>
           </div>
@@ -79,8 +79,8 @@ export default {
             await this.$store.dispatch('googleLogin')
             
         },
-        async emailPasswordSignUp(){
-          this.$store.dispatch('emailPasswordSignUp' , {
+        async emailPasswordSignIn(){
+          this.$store.dispatch('emailPasswordSignIn' , {
             email: this.signupForm.email,
             password: this.signupForm.password,
             name: this.signupForm.name
