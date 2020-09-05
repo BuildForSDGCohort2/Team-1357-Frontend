@@ -66,7 +66,7 @@ export default new Vuex.Store({
       commit('setUserProfile', {})
       this.$router.push('/login')
     },
-    async newEVent( form){
+    async newEVent(form){
       await eventsCollection.add({
         createdOn: new Date(),
         eventName: form.eventName,
