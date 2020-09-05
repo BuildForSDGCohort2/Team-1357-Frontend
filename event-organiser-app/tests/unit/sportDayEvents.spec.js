@@ -66,7 +66,7 @@ describe('An organiser sport day event scenarios' , () => {
             }, 
             task: {
                 id: 3, 
-                id: 2 ,
+                eventId: 2 ,
                 taskName: 'Find sport ground Venue',
                 taskDescription: 'We need to get more options for our grounds',
                 taskStatus: 'Pending',
