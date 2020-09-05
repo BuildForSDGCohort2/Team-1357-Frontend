@@ -206,10 +206,9 @@ describe('An organiser ' , () => {
 
     it('can view event task message thread' , async () => {
         const wrapper = shallowMount(TaskMessageThread , {store , localVue})
-        const taskMessageId = wrapper.find(`#taskMessageID`)
+        const taskMessageId = wrapper.find(`#taskMessageId`)
         const taskMessageOrganiserId = wrapper.find(`#taskMessgaeOrganiserId`)
         const taskMessageTeamMemberId = wrapper.find(`#taskMessageTeamMemberId`)
-        const taskMessageid = wrapper.find(`#taskMessageid`)
         const taskMessageThreadMessage = wrapper.find(`#taskMessageThreadMessage`)
 
         //check if thread message correct
