@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { auth , googleProvider , facebookProvider , organisersCollection , eventsCollection} from '../utils/firebase'
+import { auth , googleProvider , facebookProvider , organisersCollection , eventsCollection , annoucementsCollection} from '../utils/firebase'
 
 Vue.use(Vuex)
 
@@ -76,6 +76,16 @@ export default new Vuex.Store({
         eventDescription: form.eventDescription,
         eventPrice: form.eventPrice
       })
+    },
+    async newEventAnnoucements(form){
+      await annoucementsCollection.add({
+        createdOn: new Date(), 
+        eventId: form.eventId,
+        message: form.annoucementMessage,
+        image: form.annoucementImage,
+        organiserId: form.organiserId
+      })
+
     }
   },
   modules: {

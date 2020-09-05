@@ -59,7 +59,7 @@ describe('An organiser sport day event scenarios' , () => {
             },
             annoucement: {
                 id: 2, 
-                id: 1,
+                eventId: 1,
                 annoucementMessage: 'Date changes coming soon , due to the corona virus',
                 annoucementImage: 'https://dekhnews.com/wp-content/uploads/2016/04/Sports-Day-Poster.png',
                 organiserId: 1
@@ -158,7 +158,6 @@ describe('An organiser sport day event scenarios' , () => {
         const annoucementId = wrapper.find(`#annoucementId`)
         const annoucementMessage = wrapper.find(`#annoucementMessage`)
         const image = wrapper.find(`#annoucementImage`)
-        const organiserId = wrapper.find(`#annoucementOrganiserId`)
 
         //value ids should equal to 
         expect(annoucementMessage.text()).toContain(state.annoucement.annoucementMessage)
