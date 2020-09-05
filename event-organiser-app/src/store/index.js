@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { auth , googleProvider , facebookProvider , organisersCollection , eventsCollection , annoucementsCollection} from '../utils/firebase'
+import { auth , googleProvider , facebookProvider , organisersCollection , eventsCollection , annoucementsCollection , tasksCollection} from '../utils/firebase'
 
 Vue.use(Vuex)
 
@@ -86,6 +86,16 @@ export default new Vuex.Store({
         organiserId: form.organiserId
       })
 
+    },
+    async newTask(form){
+      await tasksCollection.add({
+        createdOn: new Date(),
+        eventId: form.eventId,
+        name: form.taskName,
+        description: form.taskDescription,
+        status: form.taskStatus,
+        teamMembers: form.taskTeamMembers
+      })
     }
   },
   modules: {

@@ -14,7 +14,7 @@ const localVue = createLocalVue()
 
 localVue.use(Vuex)
 
-describe('An organiser sport day event scenarios' , () => {
+describe('An organiser ' , () => {
     let store 
     let actions 
     let state 
