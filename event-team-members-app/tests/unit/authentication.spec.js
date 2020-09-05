@@ -9,7 +9,7 @@ import Vuex from 'vuex'
 const localVue = createLocalVue()
 
 localVue.use(Vuex)
-describe('team leaders authentication scenarios' , () => {
+describe('team members authentication scenarios' , () => {
     let store
     let actions 
     let state
