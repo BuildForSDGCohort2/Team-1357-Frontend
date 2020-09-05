@@ -14,7 +14,7 @@ const localVue = createLocalVue()
 
 localVue.use(Vuex)
 
-describe('An organiser sport day event scenarios' , () => {
+describe('An organiser ' , () => {
     let store 
     let actions 
     let state 
@@ -79,7 +79,7 @@ describe('An organiser sport day event scenarios' , () => {
                 threadMessage: 'Hello how far is the progress on this task',
                 organiserId: 1,
                 teamMemberId: 2,
-                eventId: 2
+                id: 2
             }, 
             teamMembersProfile : {
                 emailAddress: 'abc@gmail.com',
@@ -89,7 +89,7 @@ describe('An organiser sport day event scenarios' , () => {
 
             },
             chats: {
-                eventId: 2,
+                id: 2,
                 organiserId: 1,
                 teamMemberId: 3,
                 chatMessage: 'Hello there how have you been'
@@ -112,25 +112,25 @@ describe('An organiser sport day event scenarios' , () => {
         const eventPriceInput = wrapper.find('#eventPriceInput').setValue(150)
         const submitButton = wrapper.find('#createNewEvent').trigger('click')
 
-        expect(actions.NewEvent).toHaveBeenCalled()
+        expect(actions.newEvent).toHaveBeenCalled()
 
     })
 
     it('can view event details' , async () => {
         const wrapper = shallowMount(ViewEvent , {store , localVue})
-        const eventId = wrapper.find(`#eventId#${state.event.eventId}`)
-        const eventName = wrapper.find(`#eventName#${state.event.eventId}`)
-        const eventLocation = wrapper.find(`#eventLocation#${state.event.eventId}`)
-        const eventTimeDate = wrapper.find(`#eventTimeDate#${state.event.eventId}`)
-        const eventImage = wrapper.find(`#eventImage#${state.event.eventId}`)
-        const eventDescription = wrapper.find(`#eventDescription#${state.event.eventId}`)
-        const eventPrice = wrapper.find(`#eventPrice#${state.event.eventId}`)
+        const eventId = state.event.id
+        const id = wrapper.find(`#eventId`)
+        const eventName = wrapper.find(`#eventName`)
+        const eventLocation = wrapper.find(`#eventLocation`)
+        const eventTimeDate = wrapper.find(`#eventTimeDate`)
+        const eventImage = wrapper.find(`#eventImage`)
+        const eventDescription = wrapper.find(`#eventDescription`)
+        const eventPrice = wrapper.find(`#eventPrice`)
 
         //value Id's should equal to 
         expect(eventName.text()).toContain(state.event.eventName)
         expect(eventLocation.text()).toContain(state.event.eventLocation)
         expect(eventTimeDate.text()).toContain(state.event.eventTimeDate)
-        expect(eventImage.text()).toContain(state.event.eventImage)
         expect(eventDescription.text()).toContain(state.event.eventDescription)
         expect(eventPrice.text()).toContain(state.event.eventPrice)
 
@@ -139,15 +139,15 @@ describe('An organiser sport day event scenarios' , () => {
 
     it('can see event ticket sales' , async () => {
         const wrapper = shallowMount(ViewEvent , {store , localVue})
-        const ticketId = wrapper.find(`#ticket#${state.ticketSale.id}`)
-        const eventId = wrapper.find(`#ticket#${state.ticketSale.eventId}`)
-        const userId = wrapper.find(`#ticket#${state.ticketSale.userId}`)
-        const payFastId = wrapper.find(`#ticket#${state.ticketSale.payFastId}`)
+        const ticketId = wrapper.find(`#ticketId`)
+        const id = wrapper.find(`#eventId`)
+        const userId = wrapper.find(`#ticketUserId`)
+        const payFastId = wrapper.find(`#ticketPayFastId`)
 
         //value id's should equal to 
 
         expect(ticketId.text()).toContain(state.ticketSale.id)
-        expect(eventId.text()).toContain(state.ticketSale.eventId)
+        expect(id.text()).toContain(state.ticketSale.eventId)
         expect(userId.text()).toContain(state.ticketSale.userId)
         expect(payFastId.text()).toContain(state.ticketSale.payFastId)
 
@@ -155,11 +155,9 @@ describe('An organiser sport day event scenarios' , () => {
 
     it('can view event announcements' , async () => {
         const wrapper = shallowMount(Annoucements , {store , localVue})
-        const annoucementId = wrapper.find(`#annoucement#${state.annoucement.id}`)
-        const eventId = wrapper.find(`#annoucement#${state.annoucement.eventId}`)
-        const annoucementMessage = wrapper.find(`#annoucement#${state.annoucement.annoucementMessage}`)
-        const image = wrapper.find(`#annoucement#${state.annoucement.annoucementImage}`)
-        const organiserId = wrapper.find(`#annoucement#${state.annoucement.organiserId}`)
+        const annoucementId = wrapper.find(`#annoucementId`)
+        const annoucementMessage = wrapper.find(`#annoucementMessage`)
+        const image = wrapper.find(`#annoucementImage`)
 
         //value ids should equal to 
         expect(annoucementMessage.text()).toContain(state.annoucement.annoucementMessage)
@@ -168,8 +166,8 @@ describe('An organiser sport day event scenarios' , () => {
 
     it('can create new event announcements' , async () => {
         const wrapper = shallowMount(NewAnnoucement , {store , localVue})
-        const annoucementMessageInput = wrapper.find(`#annoucement#${state.annoucement.id}`).setValue('Date changes coming soon , due to the corona virus')
-        const submitButton = wrapper.find(`#annoucement#${state.annoucement.id}`).trigger('click')
+        const annoucementMessageInput = wrapper.find(`#annoucementMessageInput`).setValue('Date changes coming soon , due to the corona virus')
+        const submitButton = wrapper.find(`#annoucementSubmitButton`).trigger('click')
 
         expect(actions.newEventAnnoucements).toHaveBeenCalled()
         
@@ -178,11 +176,11 @@ describe('An organiser sport day event scenarios' , () => {
 
     it('can view event tasks' , async () => {
         const wrapper = shallowMount(Tasks , {store , localVue})
-        const taskId = wrapper.find(`#taskId#${state.task.id}`)
-        const eventId = wrapper.find(`#taskEventId#${state.task.eventId}`)
-        const taskName = wrapper.find(`#taskName#${state.task.id}`)
-        const taskDescription = wrapper.find(`#taskDescription#${state.task.id}`)
-        const taskStatus = wrapper.find(`#taskStatus#${state.task.id}`)
+        const taskId = wrapper.find(`#taskId`)
+        
+        const taskName = wrapper.find(`#taskName`)
+        const taskDescription = wrapper.find(`#taskDescription`)
+        const taskStatus = wrapper.find(`#taskStatus`)
 
 
         //valid id's should be equal to 
@@ -208,10 +206,9 @@ describe('An organiser sport day event scenarios' , () => {
 
     it('can view event task message thread' , async () => {
         const wrapper = shallowMount(TaskMessageThread , {store , localVue})
-        const taskMessageId = wrapper.find(`#taskMessageID#${state.taskThread.id}`)
-        const taskMessageOrganiserId = wrapper.find(`#taskMessgaeOrganiserId#${state.taskThread.organiserId}`)
-        const taskMessageTeamMemberId = wrapper.find(`#taskMessageTeamMemberId#${state.taskThread.teamMemberId}`)
-        const taskMessageEventId = wrapper.find(`#taskMessageEventId#${state.taskThread.eventId}`)
+        const taskMessageId = wrapper.find(`#taskMessageId`)
+        const taskMessageOrganiserId = wrapper.find(`#taskMessgaeOrganiserId`)
+        const taskMessageTeamMemberId = wrapper.find(`#taskMessageTeamMemberId`)
         const taskMessageThreadMessage = wrapper.find(`#taskMessageThreadMessage`)
 
         //check if thread message correct
@@ -221,8 +218,8 @@ describe('An organiser sport day event scenarios' , () => {
 
     it('can send a message on the event task thread' , async () => {
         const wrapper = shallowMount(TaskMessageThread , {store , localVue})
-        const taskThreadMessageInput = wrapper.find(`#taskThreadMessageInput#${state.taskThread.id}`).setValue(state.taskThread.threadMessage)
-        const submitButton = wrapper.find(`#taskThreadMessageSubmitButton#${state.taskThread.id}`).trigger('click')
+        const taskThreadMessageInput = wrapper.find(`#taskThreadMessageInput`).setValue(state.taskThread.threadMessage)
+        const submitButton = wrapper.find(`#taskThreadMessageSubmitButton`).trigger('click')
 
         expect(actions.newTaskThreadMessage).toHaveBeenCalled()
 
@@ -230,10 +227,10 @@ describe('An organiser sport day event scenarios' , () => {
 
     it('can view all event team members' , async () => {
         const wrapper = shallowMount(TeamMembers , {store , localVue})
-        const eventTeamMemberId = wrapper.find(`#teamMemberId#${state.teamMembersProfile.id}`)
-        const eventTeamMemberEmailAddresss = wrapper.find(`#teamMemberEmailAddress#${state.teamMembersProfile.id}`)
-        const eventTeamMemberAvatar = wrapper.find(`#teamMemberAvatar#${state.teamMembersProfile.id}`)
-        const eventTeamMemberName = wrapper.find(`#teamMemberName#${state.teamMembersProfile.id}`)
+        const eventTeamMemberId = wrapper.find(`#teamMemberId`)
+        const eventTeamMemberEmailAddresss = wrapper.find(`#teamMemberEmailAddress`)
+        const eventTeamMemberAvatar = wrapper.find(`#teamMemberAvatar`)
+        const eventTeamMemberName = wrapper.find(`#teamMemberName`)
 
         expect(eventTeamMemberName.text()).toContain(state.teamMembersProfile.name)
 
@@ -243,8 +240,8 @@ describe('An organiser sport day event scenarios' , () => {
 
     it('can add an event team member' , async () => {
         const wrapper = shallowMount(TeamMembers , {store , localVue})
-        const addEventTeamMemberInput = wrapper.find(`#teamMemberInput#${state.event.id}`).setValue('abc@gmail.com')
-        const submitButton = wrapper.find(`#teamMemberSubmitButton#${state.event.id}`).trigger('click')
+        const addEventTeamMemberInput = wrapper.find(`#teamMemberInput`).setValue('abc@gmail.com')
+        const submitButton = wrapper.find(`#teamMemberSubmitButton`).trigger('click')
 
         expect(actions.newEventTeamMember).toHaveBeenCalled()
 
@@ -252,8 +249,8 @@ describe('An organiser sport day event scenarios' , () => {
 
     it('can remove a team member' , async () => {
         const wrapper = shallowMount(TeamMembers , {store , localVue})
-        const eventTeamMember = wrapper.find(`#eventTeamMemberId#${state.teamMembersProfile.id}`)
-        const eventTeamMemberRemoveButton = wrapper.find(`#eventTeamMemberRemoveButton#${state.teamMembersProfile.id}`).trigger('click')
+        const eventTeamMember = wrapper.find(`#eventTeamMemberId`)
+        const eventTeamMemberRemoveButton = wrapper.find(`#eventTeamMemberRemoveButton`).trigger('click')
 
         expect(actions.removeEventTeamMember).toHaveBeenCalled()
         
