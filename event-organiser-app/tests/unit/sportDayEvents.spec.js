@@ -112,7 +112,7 @@ describe('An organiser sport day event scenarios' , () => {
         const eventPriceInput = wrapper.find('#eventPriceInput').setValue(150)
         const submitButton = wrapper.find('#createNewEvent').trigger('click')
 
-        expect(actions.NewEvent).toHaveBeenCalled()
+        expect(actions.newEvent).toHaveBeenCalled()
 
     })
 

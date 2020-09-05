@@ -1,16 +1,20 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { auth , googleProvider , facebookProvider , organisersCollection} from '../utils/firebase'
+import { auth , googleProvider , facebookProvider , organisersCollection , eventsCollection} from '../utils/firebase'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    userProfile: {}
+    userProfile: {}, 
+    events: []
   },
   mutations: {
     setUserProfile(state , val){
       state.userProfile = val
+    } , 
+    setEvents(state , val){
+      state.events = val
     }
   },
   actions: {
@@ -61,6 +65,17 @@ export default new Vuex.Store({
       
       commit('setUserProfile', {})
       this.$router.push('/login')
+    },
+    async newEVent( form){
+      await eventsCollection.add({
+        createdOn: new Date(),
+        eventName: form.eventName,
+        eventlocation: form.eventlocation,
+        eventTimeDate: form.eventTimeDate,
+        eventImage: form.eventImage,
+        eventDescription: form.eventDescription,
+        eventPrice: form.eventPrice
+      })
     }
   },
   modules: {
