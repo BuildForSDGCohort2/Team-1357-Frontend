@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { auth , googleProvider , facebookProvider , organisersCollection , eventsCollection , annoucementsCollection , tasksCollection} from '../utils/firebase'
+import { auth , googleProvider , facebookProvider , organisersCollection , eventsCollection , annoucementsCollection , tasksCollection , taskThreadsCollection} from '../utils/firebase'
 
 Vue.use(Vuex)
 
@@ -95,6 +95,15 @@ export default new Vuex.Store({
         description: form.taskDescription,
         status: form.taskStatus,
         teamMembers: form.taskTeamMembers
+      })
+    }, 
+    async newTaskThreadMessage(form){
+      await taskThreadsCollection.add({
+        createdOn: new Date(), 
+        taskId : form.taskId, 
+        message: form.threadMessage,
+        organiserId: form.organiserId,
+        teamMembers: form.teamMembers
       })
     }
   },
