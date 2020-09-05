@@ -9,7 +9,23 @@
                 </div>
             </div>
         </div>
-       
+       <form >
+           <div class="form-group">
+               <div class="col-xs-6">
+                   <label for="teamMemberEmail">Team Member Email</label>
+                   <input type="text" class="form-control" name="teamMemberEmail" id="teamMemberInput" v-model.trim="teamMemberEmailInput">
+               </div>
+           </div>
+           
+           <div class="form-group">
+               <div class="col-xs-6">
+                   <br>
+                   <button class="btn btn-lg btn-success" id="teamMemberSubmitButton" @click="newEventTeamMember"></button>
+               </div>
+           </div>
+
+          
+       </form>
        
     </div>
     
@@ -27,6 +43,14 @@ export default {
                 id: 2
 
             },
+            teamMemberEmailInput: ''
+        }
+    } , 
+    methods: {
+        newEventTeamMember(){
+            this.$store.dispatch('newEventTeamMember', {
+                emailAddress: this.teamMemberEmailInput
+            })
         }
     }
 }

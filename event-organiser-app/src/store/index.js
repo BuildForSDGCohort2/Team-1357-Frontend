@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { auth , googleProvider , facebookProvider , organisersCollection , eventsCollection , annoucementsCollection , tasksCollection , taskThreadsCollection} from '../utils/firebase'
+import { auth , googleProvider , facebookProvider , organisersCollection , eventsCollection , annoucementsCollection , tasksCollection , taskThreadsCollection , teamMembersEventsCollection} from '../utils/firebase'
 
 Vue.use(Vuex)
 
@@ -105,6 +105,23 @@ export default new Vuex.Store({
         organiserId: form.organiserId,
         teamMembers: form.teamMembers
       })
+    }, 
+    async newEVentTeamMember({dispatch},form){
+      await teamMembersEventsCollection.add({
+        emailAddress: form.emailAddress
+      })
+
+      dispatch('teamMemberEmailLink' , form.emailAddress)
+
+    }, 
+    async teamMemberEmailLink(emailAddress){
+      const actionCodeSettings = {
+        url: '/emailLinkSignIn',
+        dynamicLinkDomain: 'example.page.link'
+
+      }
+
+      await auth.sendSignInLinkToEmail(emailAddress , actionCodeSettings )
     }
   },
   modules: {
