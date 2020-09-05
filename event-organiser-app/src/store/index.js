@@ -122,6 +122,9 @@ export default new Vuex.Store({
       }
 
       await auth.sendSignInLinkToEmail(emailAddress , actionCodeSettings )
+    },
+    async removeEventTeamMember(form){
+      await teamMembersEventsCollection.doc(form.id).delete()
     }
   },
   modules: {

@@ -5,8 +5,9 @@
             <div class="card">
                 <img class="card-img-top" src="https://picsum.photos/200/150/?random">
                 <div class="card-block">
-                    <h5 class="text-bold" id="teamMemberName">{{teamMembersProfile}}</h5>
+                    <h5 class="text-bold" id="teamMemberName">{{teamMembersProfile.name}}</h5>
                 </div>
+                <button class="btn btn-lg btn-danger" id="eventTeamMemberRemoveButton" @click="removeEventTeamMember(teamMembersProfile.id)"></button>
             </div>
         </div>
        <form >
@@ -20,7 +21,7 @@
            <div class="form-group">
                <div class="col-xs-6">
                    <br>
-                   <button class="btn btn-lg btn-success" id="teamMemberSubmitButton" @click="newEventTeamMember"></button>
+                   <button class="btn btn-lg btn-success" id="teamMemberSubmitButton" @click="newEventTeamMember()"></button>
                </div>
            </div>
 
@@ -51,6 +52,9 @@ export default {
             this.$store.dispatch('newEventTeamMember', {
                 emailAddress: this.teamMemberEmailInput
             })
+        }, 
+        removeEventTeamMember(id){
+            this.$store.dispatch('removeEventTeamMember' , id)
         }
     }
 }
