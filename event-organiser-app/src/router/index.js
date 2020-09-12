@@ -6,6 +6,8 @@ import DashBoard from '../views/Dashboard.vue'
 import Login from '../components/Login'
 import Settings from '../views/Settings.vue'
 import NewEvent from '../components/NewEvent.vue'
+import ViewEvent from '@/components/ViewEvent.vue'
+import NewAnnoucement from '@/components/NewAnnoucement.vue'
 import { auth } from '../utils/firebase'
 Vue.use(VueRouter)
 
@@ -46,7 +48,23 @@ Vue.use(VueRouter)
      meta: {
        requiresAuth: false
      }
-   }
+   },
+   {
+     path: '/viewEvent',
+     name: 'viewEvent',
+     component: ViewEvent,
+     meta: {
+       requiresAuth: false
+     }
+   },
+   {
+    path: '/newAnnoucement',
+    name: 'newAnnoucement',
+    component: NewAnnoucement,
+    meta: {
+      requiresAuth: false
+    }
+  }
 ]
 
 const router = new VueRouter({
