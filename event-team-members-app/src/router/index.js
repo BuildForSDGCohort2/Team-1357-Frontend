@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 // import Home from '../views/Home.vue'
 //imported new View
+import EventDetails from '@/components/EventDetails.vue'
 import DashBoard from '../views/Dashboard.vue'
 import Login from '../components/Login'
 import Settings from '../views/Settings.vue'
@@ -9,13 +10,13 @@ import EmailSignUp from '../components/EmailSignUp.vue'
 import { auth } from '../utils/firebase'
 Vue.use(VueRouter)
 
-  const routes = [
+const routes = [
   {
     path: '/',
     name: 'Dashboard',
     component: DashBoard,
     meta: {
-      requiresAuth: false 
+      requiresAuth: false
     }
   },
   {
@@ -25,28 +26,36 @@ Vue.use(VueRouter)
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }, 
+  },
   {
     path: '/login',
     name: 'Login',
     component: Login
   },
-   {
-     path: '/settings',
-     name: 'settings',
-     component: Settings,
-     meta: {
-       requiresAuth: true
-     }
-   },
-   {
-     path: '/emailLinkSignIn',
-     name: 'emailLinkSignIn',
-     component: EmailSignUp,
-     meta: {
-       requiresAuth: false
-     }
-   }
+  {
+    path: '/settings',
+    name: 'settings',
+    component: Settings,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/emailLinkSignIn',
+    name: 'emailLinkSignIn',
+    component: EmailSignUp,
+    meta: {
+      requiresAuth: false
+    }
+  },
+  {
+    path: '/eventDetails',
+    name: 'eventDetails',
+    component: EventDetails,
+    meta: {
+      requiresAuth: false
+    }
+  }
 ]
 
 const router = new VueRouter({
@@ -55,10 +64,10 @@ const router = new VueRouter({
   routes
 })
 
-router.beforeEach((to , from , next) => {
+router.beforeEach((to, from, next) => {
   const requiresAuth = to.matched.some(x => x.meta.requiresAuth)
 
-  if(requiresAuth && !auth.currentUser){
+  if (requiresAuth && !auth.currentUser) {
     next('/login')
   } else {
     next()
