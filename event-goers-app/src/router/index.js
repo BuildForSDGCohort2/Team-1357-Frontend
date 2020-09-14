@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 // import Home from '../views/Home.vue'
 //imported new View
 import DashBoard from '../views/Dashboard.vue'
+import EventDetails from '@/components/EventDetails.vue'
 import Login from '../components/Login'
 import Settings from '../views/Settings.vue'
 import { auth } from '../utils/firebase'
@@ -36,6 +37,14 @@ Vue.use(VueRouter)
      component: Settings,
      meta: {
        requiresAuth: true
+     }
+   },
+   {
+     path: '/eventDetails',
+     name: 'eventDetails',
+     component: EventDetails,
+     meta: {
+       requiresAuth: false
      }
    }
 ]
