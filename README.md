@@ -25,3 +25,11 @@ Incentives Sports Day Goers to integrate this as part of their lifestyle.
 Promote good health & well being
 
 Technical Document: (https://docs.google.com/document/d/1TLm3tH4NxNYxOVsCoNec7SdgZVuvzBCA4Lox_i2gsPU/edit?usp=sharing)
+
+App Links: 
+
+- Event Organiser : https://tendaievents-c0192.web.app/
+
+- Event Goer : https://tendaieventgoers.web.app/
+
+- Event Team Member: https://tendaiteammembers.web.app/
