@@ -15,7 +15,7 @@ Vue.use(VueRouter)
     name: 'Dashboard',
     component: DashBoard,
     meta: {
-      requiresAuth: false 
+      requiresAuth: true
     }
   },
   {
@@ -44,7 +44,7 @@ Vue.use(VueRouter)
      name: 'eventDetails',
      component: EventDetails,
      meta: {
-       requiresAuth: false
+       requiresAuth: true
      }
    }
 ]
