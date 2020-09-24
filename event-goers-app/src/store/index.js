@@ -21,6 +21,7 @@ export default new Vuex.Store({
 
         // fetch user profile and set in state 
         commit('setUserProfile' , user)
+        this.$router.push('/')
       } catch (error) {
         console.log(error.message)
       }
@@ -32,6 +33,7 @@ export default new Vuex.Store({
         
         // fetch user profile and set in state 
         commit('setUserProfile' , user)
+        this.$router.push('/')
       } catch (error) {
         console.log(error.message)
       }
@@ -49,6 +51,7 @@ export default new Vuex.Store({
 
         //fetch user profile and set in state 
         dispatch('fetchUserProfile' , user)
+        this.$router.push('/')
       } catch (error) {
         console.log(error.message)
       }
