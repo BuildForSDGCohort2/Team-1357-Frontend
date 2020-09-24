@@ -16,7 +16,7 @@ const routes = [
     name: 'Dashboard',
     component: DashBoard,
     meta: {
-      requiresAuth: false
+      requiresAuth: true
     }
   },
   {
@@ -53,7 +53,7 @@ const routes = [
     name: 'eventDetails',
     component: EventDetails,
     meta: {
-      requiresAuth: false
+      requiresAuth: true
     }
   }
 ]
