@@ -67,10 +67,16 @@
                       <a href="https://twitter.com/JKyony" class="btn btn-link btn-just-icon">
                         <i class="fa fa-twitter"></i>
                       </a>
-                      <a href="https://www.instagram.com/jwvlkr/" class="btn btn-link btn-just-icon">
+                      <a
+                        href="https://www.instagram.com/jwvlkr/"
+                        class="btn btn-link btn-just-icon"
+                      >
                         <i class="fa fa-instagram"></i>
                       </a>
-                      <a href="https://www.facebook.com/john.kyony/" class="btn btn-link btn-just-icon">
+                      <a
+                        href="https://www.facebook.com/john.kyony/"
+                        class="btn btn-link btn-just-icon"
+                      >
                         <i class="fa fa-facebook-square"></i>
                       </a>
                     </div>
