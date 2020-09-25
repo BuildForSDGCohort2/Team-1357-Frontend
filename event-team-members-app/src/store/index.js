@@ -3,6 +3,8 @@ import Vuex from 'vuex'
 import { auth , googleProvider , facebookProvider , teamMembersCollection} from '../utils/firebase'
 
 Vue.use(Vuex)
+import router from'../router/index'
+
 
 export default new Vuex.Store({
   state: {
@@ -22,7 +24,7 @@ export default new Vuex.Store({
 
       // fetch user profile and set in state 
       commit('setUserProfile' , user)
-      this.$router.push('/')
+      router.push('/')
     } catch (error) {
       console.log(error.message)
     }
@@ -35,7 +37,7 @@ export default new Vuex.Store({
 
       //fetch user profile and set in state 
       commit('setUserProfile' , user)
-      this.$router.push('/')
+      router.push('/')
       } catch (error) {
         console.log(error.message)
       }
@@ -54,7 +56,7 @@ export default new Vuex.Store({
 
         //fetch user profile and set in state 
         dispatch('fetchUserProfile' , user)
-        this.$router.push('/')
+        router.push('/')
       } catch (error) {
         console.log(error.message)
       }
@@ -68,7 +70,7 @@ export default new Vuex.Store({
       await auth.signOut()
       
       commit('setUserProfile', {})
-      this.$router.push('/login')
+      router.push('/login')
     }
   },
   modules: {
