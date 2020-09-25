@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="row">
+    <div class="row justify-content-center">
       <div class="col-md-6">
         <div class="card">
           <div class="card-header card-header-icon card-header-rose">
@@ -16,7 +16,7 @@
         </div>
       </div>
     </div>
-    <div class="row">
+    <div class="row justify-content-center">
       <div class="col-md-6">
         <div class="card">
           <div class="card-header card-header-icon card-header-rose">
