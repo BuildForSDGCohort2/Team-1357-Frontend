@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 import { auth , googleProvider , facebookProvider , organisersCollection , eventsCollection , annoucementsCollection , tasksCollection , taskThreadsCollection , teamMembersEventsCollection} from '../utils/firebase'
 
 Vue.use(Vuex)
-
+import router from'../router/index'
 export default new Vuex.Store({
   state: {
     userProfile: {}, 
@@ -26,7 +26,7 @@ export default new Vuex.Store({
 
       // fetch user profile and set in state 
       commit('setUserProfile' , user)
-      this.$router.push('/')
+      router.push('/')
     } catch (error) {
       console.log(error.message)
     }
@@ -39,7 +39,7 @@ export default new Vuex.Store({
 
       //fetch user profile and set in state 
       commit('setUserProfile' , user)
-      this.$router.push('/')
+      router.push('/')
       } catch (error) {
         console.log(error.message)
       }
@@ -58,7 +58,7 @@ export default new Vuex.Store({
 
         //fetch user profile and set in state 
         dispatch('fetchUserProfile' , user)
-        this.$router.push('/')
+        router.push('/')
       } catch (error) {
         console.log(error.message)
       }
@@ -67,7 +67,7 @@ export default new Vuex.Store({
       await auth.signOut()
       
       commit('setUserProfile', {})
-      this.$router.push('/login')
+      router.push('/login')
     },
     async newEVent(form){
       await eventsCollection.add({

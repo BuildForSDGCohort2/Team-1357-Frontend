@@ -17,6 +17,8 @@
         <li class="nav-item">
           <a href="/NewEvent" class="nav-link">New Event</a>
         </li>
+       
+        <li><a id="signout" @click="signOut">SignOut</a></li>
         <!-- <li class="nav-item">
           <a class="nav-link" href="javascript:;">Events</a>
         </li>
@@ -36,6 +38,11 @@
 
 <script>
 export default {
-    name: 'NavBar'
+    name: 'NavBar',
+     methods: {
+        signOut(){
+            this.$store.dispatch('signOut')
+        }
+    }
 }
 </script>
