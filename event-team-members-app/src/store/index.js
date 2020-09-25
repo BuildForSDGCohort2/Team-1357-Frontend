@@ -43,7 +43,7 @@ export default new Vuex.Store({
       }
 
     },
-    async emailPasswordSignUp({dispatch} , form){
+    async emailPasswordSignUp(form){
       try {
         //email password login
         const { user } = await auth.signInWithEmailAndPassword(form.email, form.password)
