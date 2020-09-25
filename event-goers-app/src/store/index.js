@@ -52,7 +52,7 @@ export default new Vuex.Store({
         })
 
         //fetch user profile and set in state 
-        dispatch('fetchUserProfile' , user)
+       
         router.push('/')
       } catch (error) {
         console.log(error.message)
