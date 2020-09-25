@@ -33,6 +33,6 @@ auth.onAuthStateChanged(user => {
   }
 
   if(user){
-    store.dispatch('fetchUserProfile' , user)
+    store.commit('setUserProfile' , user)
   }
 })
